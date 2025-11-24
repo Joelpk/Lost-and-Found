@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container py-5">
+
+    <h1 class="display-5 fw-bold mb-5 text-center">
+        Browse Found Items and Claim What Belongs to You
+    </h1>
+    <p class="lead text-center text-muted mx-auto mb-5 subtext">Every item listed here has been found by someone in the community. Search through the collection and contact the finder to retrieve your belongings.</p>
+
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+
+        <% for(let i = 0; i < 8; i++) { %>
+        <div class="col">
+            <div class="card h-100 shadow-sm rounded-4 hover-card">
+                <img src="/images/found-pic.jpg" class="card-img-top rounded-top-4" alt="Found item">
+                <div class="card-body">
+                    <h5 class="card-title fw-semibold">Brown leather, eyeglasses, keys</h5>
+                    <p class="card-text text-muted">
+                        Get in touch, claim and collect your item
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+    </div>
+
+</div>
+
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,92 @@
+<%- include('partials/header.ejs') %>
+
+<body>
+  <!-- BIG IMAGE AND TEXT -->
+   <section class="container py-5">
+  <div class="row align-items-center">
+    <!-- left text column -->
+    <div class="col-md-6">
+      <h1 class="display-4 fw-bold">Find Your Lost Items with Ease</h1>
+      <p class="lead mt-3">
+        Connect with your lost belongings through our system 
+        and helpful community.
+      </p>
+      <!-- buttons -->
+      <div class="d-flex justify-content-start gap-3 mt-4">
+        <a href="/reportFoundItem.ejs"><button type="button" class="btn btn-outline-primary btn-lg">Report Found Item</button></a>
+        <a href="/foundItem.ejs"><button type="button" class="btn btn-primary btn-lg">Found Items</button></a>
+        <a href="/reportLostItem.ejs"><button type="button" class="btn btn-outline-primary btn-lg">Report Lost Item</button></a>
+      </div>
+    </div>
+    <!-- right image column -->
+    <div class="col-md-6 text-center">
+      <img src="/images/lost-pic.jpg" 
+           alt="Hero Image"
+           class="img-fluid rounded-4 shadow-lg">
+    </div>
+  </div>
+</section>
+<!-- HERO END -->
+
+<!-- CARDS START -->
+<section class="container py-5">
+  <h2 class="text-center fw-bold mb-5">How It Works</h2>
+
+  <div class="row g-4">
+
+    <!-- Card 1 -->
+    <div class="col-md-6 col-lg-3">
+      <div class="how-card text-center p-4">
+        <div class="icon-box mb-3">
+          <img src="/images/search.svg" width="40" alt="">
+        </div>
+        <h5 class="fw-bold">Search Items</h5>
+        <p class="mt-3">
+          Browse through our extensive database of lost and found items
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-6 col-lg-3">
+      <div class="how-card text-center p-4">
+        <div class="icon-box mb-3">
+          <img src="/images/report.svg" width="40" alt="">
+        </div>
+        <h5 class="fw-bold">Report Lost Item</h5>
+        <p class="mt-3">
+          Submit detailed information about your missing belongings
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-6 col-lg-3">
+      <div class="how-card text-center p-4">
+        <div class="icon-box mb-3">
+          <img src="/images/found.svg" width="40" alt="">
+        </div>
+        <h5 class="fw-bold">Report Found Item</h5>
+        <p class="mt-3">
+          Help others by reporting items you've found in your area
+        </p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-6 col-lg-3">
+      <div class="how-card text-center p-4">
+        <div class="icon-box mb-3">
+          <img src="/images/chat.svg" width="40" alt="">
+        </div>
+        <h5 class="fw-bold">Connect</h5>
+        <p class="mt-3">
+          Securely communicate with finders to retrieve your items
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%- include('partials/footer.ejs') %>
