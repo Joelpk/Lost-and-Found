@@ -16,3 +16,10 @@ Site live at https://lost-and-found-j9if.onrender.com
 | Styling | Custom CSS + Bootstrap 5 |
 | Hosting (Current) | Render |
 | Hosting (Future) | Vercel / AWS / Supabase / Firebase |
+
+
+## 📸 Screenshots
+
+| Home Page | Report Page | Admin Dashboard |
+|-----------|-------------|-----------------|
+| ![Home](./screenshots/homepage.jpg) |
