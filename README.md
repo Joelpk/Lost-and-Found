@@ -20,6 +20,6 @@ Site live at https://lost-and-found-j9if.onrender.com
 
 ## 📸 Screenshots
 
-| Home Page | Report Page | Admin Dashboard |
-|-----------|-------------|-----------------|
+| Home Page |
+|-----------|
 | ![Home](./screenshots/homepage.jpg) |
