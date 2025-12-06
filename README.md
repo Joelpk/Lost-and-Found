@@ -5,3 +5,14 @@ Users can report lost items, submit found items with photos, browse all items, a
 Includes responsive UI, image uploads, clean form design, and community-driven item recovery.
 
 Site live at https://lost-and-found-j9if.onrender.com
+
+## 🖥️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | HTML, CSS, Bootstrap, EJS |
+| Backend | Node.js, Express |
+| Template Engine | EJS |
+| Styling | Custom CSS + Bootstrap 5 |
+| Hosting (Current) | Render |
+| Hosting (Future) | Vercel / AWS / Supabase / Firebase |
