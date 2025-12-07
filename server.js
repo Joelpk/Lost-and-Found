@@ -1,6 +1,13 @@
-import express from "express";
+import express, { response } from "express";
 import bodyParser from "body-parser";
-import path from "path"
+import { createClient } from '@supabase/supabase-js'
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const supabaseUrl = process.env.SUPABASE_URL
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 const app = express();
 const PORT = 3000;
@@ -24,12 +31,54 @@ app.get("/reportLostItem.ejs", (req, res) =>{
   res.render("reportLostItem.ejs");
 })
 
-export default app;
+app.get("/admin.ejs", (req, res) =>{
+  res.render("admin.ejs");
+})
 
-const isDirectRun = (process.argv[1] && process.argv[1].endsWith('server.js'));
-if (isDirectRun) {
-  const PORT = process.env.PORT || 3000;
+app.post("/report-lost", async(req, res) =>{
+  const{
+    itemName, location, eventDate, description, fullName, email, phone
+  } = req.body;
+
+  try{
+    const {error} = await supabase.from("reports").insert([
+      {
+        type: "lost", itemName: itemName, location: location, event_date: eventDate, description: description, full_name: fullName, email: email, phone: phone, status:"open"
+      }
+    ]);
+    if(error){
+      console.error("Error inserting lost report:", error);
+      return res.status(500).send("An error occured while saving your report");
+    }
+    res.redirect("/");
+  }catch(err){
+    res.status(500).send("Error while saving your report");
+  }
+
+})
+
+app.post("/report-found", async(req, res) =>{
+  const{
+    itemName, location, eventDate, description, fullName, email, phone
+  } = req.body;
+
+  try{
+    const {error} = await supabase.from("reports").insert([
+      {
+        type: "found", itemName: itemName, location: location, event_date: eventDate, description: description, full_name: fullName, email: email, phone: phone, status:"open"
+      }
+    ]);
+    if(error){
+      console.error("Error inserting lost report:", error);
+      return res.status(500).send("An error occured while saving your report");
+    }
+    res.redirect("/");
+  }catch(err){
+    res.status(500).send("Error while saving your report");
+  }
+  
+})
+
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
-}

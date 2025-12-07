@@ -30,3 +30,47 @@
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
+.admin-container {
+  font-size: 1.2rem;   /* big! ~19px */
+}
+
+.admin-title {
+  font-size: 2.4rem;   /* ~38px */
+}
+
+.admin-subtitle {
+  font-size: 1.3rem;   /* ~20px */
+}
+
+.admin-container .table-responsive {
+  border-radius: 20px !important;
+}
+
+.admin-container thead th {
+  font-size: 1.25rem;  /* bigger headers */
+  font-weight: 700;
+  padding: 18px 14px;
+}
+
+.admin-container tbody td {
+  font-size: 1.15rem;   /* bigger body */
+  padding: 18px 14px !important;
+}
+
+.admin-container .fw-semibold {
+  font-size: 1.25rem;   /* bigger item & name */
+}
+
+.admin-container td small {
+  font-size: 1.05rem !important;
+}
+
+.admin-container .badge {
+  font-size: 1.05rem;
+  padding: 8px 14px;    /* bigger badge pill */
+  border-radius: 999px;
+}
+
+.admin-container table tbody tr:hover {
+  background-color: #f1f3f5;
+}
