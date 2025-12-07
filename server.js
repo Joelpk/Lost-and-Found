@@ -79,6 +79,26 @@ app.post("/report-found", async(req, res) =>{
   
 })
 
+app.get("/supabase-test", async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from("reports")
+      .select("id, type, item_name, created_at")
+      .limit(5);
+
+    if (error) {
+      console.error("Supabase test error:", error);
+      return res.status(500).send("Supabase error: " + error.message);
+    }
+
+    res.send(data || []);
+  } catch (err) {
+    console.error("Unexpected Supabase test error:", err);
+    res.status(500).send("Unexpected error: " + err.message);
+  }
+});
+
+
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
