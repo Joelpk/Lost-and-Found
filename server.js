@@ -1,6 +1,7 @@
 import express, { response } from "express";
 import bodyParser from "body-parser";
 import { createClient } from '@supabase/supabase-js'
+import multer from "multer"; // for file upload (photo)
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -11,6 +12,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 const app = express();
 const PORT = 3000;
+// const upload = multer({storage: multer.memoryStorage()})
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -31,54 +33,122 @@ app.get("/reportLostItem.ejs", (req, res) =>{
   res.render("reportLostItem.ejs");
 })
 
-app.get("/admin.ejs", (req, res) =>{
-  res.render("admin.ejs");
-})
+app.get("/admin.ejs", async (req, res) => {
+  try {
+    const { data: reports, error } = await supabase
+      .from("reports")
+      .select("*")
+      .order("created_at", { ascending: false });
 
-app.post("/report-lost", async(req, res) =>{
-  const{
-    itemName, location, eventDate, description, fullName, email, phone
-  } = req.body;
-
-  try{
-    const {error} = await supabase.from("reports").insert([
-      {
-        type: "lost", itemName: itemName, location: location, event_date: eventDate, description: description, full_name: fullName, email: email, phone: phone, status:"open"
-      }
-    ]);
-    if(error){
-      console.error("Error inserting lost report:", error);
-      return res.status(500).send("An error occured while saving your report");
+    if (error) {
+      console.error("Error fetching reports:", error);
+      return res.status(500).send("Failed to load admin dashboard");
     }
-    res.redirect("/");
-  }catch(err){
-    res.status(500).send("Error while saving your report");
-  }
 
-})
+    res.render("admin.ejs", { reports });
+  } catch (err) {
+    console.error("Admin route error:", err);
+    res.status(500).send("Server error");
+  }
+});
+
+
+app.post("/report-lost", async (req, res) => {
+  console.log(req.body)
+  try {
+    const {
+      itemName,
+      category,
+      description,
+      location,
+      eventDate,
+      fullName,
+      email,
+      phone
+    } = req.body;
+
+    // Basic validation (matches NOT NULL columns)
+    if (!itemName || !fullName) {
+      return res.status(400).send("Item name and full name are required");
+    }
+
+    const { error } = await supabase
+      .from("reports")
+      .insert([
+        {
+          type: "lost",
+          item_name: itemName,
+          category: category || null,
+          description: description || null,
+          location: location || null,
+          event_date: eventDate || null,
+          full_name: fullName,
+          email: email || null,
+          phone: phone || null,
+          status: "open"
+        }
+      ]);
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return res.status(500).send("Failed to save report");
+    }
+
+    res.redirect("/");
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    res.status(500).send("Server error");
+  }
+});
+
 
 app.post("/report-found", async(req, res) =>{
-  const{
-    itemName, location, eventDate, description, fullName, email, phone
-  } = req.body;
+  console.log(req.body)
+  try {
+    const {
+      itemName,
+      category,
+      description,
+      location,
+      eventDate,
+      fullName,
+      email,
+      phone
+    } = req.body;
 
-  try{
-    const {error} = await supabase.from("reports").insert([
-      {
-        type: "found", itemName: itemName, location: location, event_date: eventDate, description: description, full_name: fullName, email: email, phone: phone, status:"open"
-      }
-    ]);
-    if(error){
-      console.error("Error inserting lost report:", error);
-      return res.status(500).send("An error occured while saving your report");
+    // Basic validation (matches NOT NULL columns)
+    if (!itemName || !fullName) {
+      return res.status(400).send("Item name and full name are required");
     }
-    res.redirect("/");
-  }catch(err){
-    res.status(500).send("Error while saving your report");
-  }
-  
-})
 
+    const { error } = await supabase
+      .from("reports")
+      .insert([
+        {
+          type: "found",
+          item_name: itemName,
+          category: category || null,
+          description: description || null,
+          location: location || null,
+          event_date: eventDate || null,
+          full_name: fullName,
+          email: email || null,
+          phone: phone || null,
+          status: "open"
+        }
+      ]);
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return res.status(500).send("Failed to save report");
+    }
+
+    res.redirect("/");
+  } catch (err) {
+    console.error("Unexpected error:", err);
+    res.status(500).send("Server error");
+  }
+});
 app.get("/supabase-test", async (req, res) => {
   try {
     const { data, error } = await supabase

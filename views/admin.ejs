@@ -13,7 +13,8 @@
 
     <div class="text-end">
       <small class="text-muted">
-        Total reports: <span class="fw-semibold">3</span>
+        Total reports: <span class="fw-semibold"><%= reports.length %></span>
+
       </small>
     </div>
   </div>
@@ -36,102 +37,62 @@
         </tr>
       </thead>
 
+      
       <tbody>
+  <% reports.forEach((report, index) => { %>
+    <tr>
+      <td><%= index + 1 %></td>
 
-        <!-- STATIC ROW 1 -->
-        <tr>
-          <td>1</td>
+      <td>
+        <div class="fw-semibold"><%= report.full_name %></div>
+        <small class="text-muted">ID: <%= report.id %></small>
+      </td>
 
-          <td>
-            <div class="fw-semibold">John Doe</div>
-            <small class="text-muted">ID: 1</small>
-          </td>
+      <td>
+        <% if (report.email) { %>
+          <small class="d-block"><%= report.email %></small>
+        <% } %>
+        <% if (report.phone) { %>
+          <small class="d-block"><%= report.phone %></small>
+        <% } %>
+      </td>
 
-          <td>
-            <small class="d-block">john@example.com</small>
-            <small class="d-block">+91 98765 43210</small>
-          </td>
+      <td>
+        <% if (report.type === "lost") { %>
+          <span class="badge text-bg-danger">Lost</span>
+        <% } else { %>
+          <span class="badge text-bg-success">Found</span>
+        <% } %>
+      </td>
 
-          <td><span class="badge text-bg-danger">Lost</span></td>
+      <td class="fw-semibold"><%= report.item_name %></td>
+      <td><%= report.category || "-" %></td>
+      <td><%= report.location || "-" %></td>
+      <td><%= report.event_date || "-" %></td>
 
-          <td class="fw-semibold">Black Wallet</td>
-          <td>Wallet</td>
-          <td>Campus Library</td>
-          <td>2025-11-20</td>
+      <td>
+        <span class="badge
+          <%= report.status === "open" ? "text-bg-primary" :
+              report.status === "matched" ? "text-bg-warning text-dark" :
+              report.status === "returned" ? "text-bg-success" :
+              "text-bg-secondary" %>">
+          <%= report.status %>
+        </span>
+      </td>
 
-          <td><span class="badge text-bg-primary">Open</span></td>
+      <td style="max-width: 260px;">
+        <small class="text-muted d-block text-truncate"
+               title="<%= report.description %>">
+          <%= report.description || "-" %>
+        </small>
+      </td>
+    </tr>
+  <% }) %>
+</tbody>
 
-          <td style="max-width: 260px;">
-            <small class="text-muted d-block text-truncate"
-                   title="Black leather wallet with college ID and cards.">
-              Black leather wallet with college ID and cards.
-            </small>
-          </td>
-        </tr>
 
-        <!-- STATIC ROW 2 -->
-        <tr>
-          <td>2</td>
 
-          <td>
-            <div class="fw-semibold">Priya Singh</div>
-            <small class="text-muted">ID: 2</small>
-          </td>
 
-          <td>
-            <small class="d-block">priya@example.com</small>
-            <small class="d-block">+91 99887 76655</small>
-          </td>
-
-          <td><span class="badge text-bg-success">Found</span></td>
-
-          <td class="fw-semibold">iPhone 13</td>
-          <td>Phone</td>
-          <td>Cafeteria</td>
-          <td>2025-11-22</td>
-
-          <td><span class="badge text-bg-warning text-dark">Matched</span></td>
-
-          <td style="max-width: 260px;">
-            <small class="text-muted d-block text-truncate"
-                   title="Blue iPhone 13 with transparent cover, dog wallpaper.">
-              Blue iPhone 13 with transparent cover, dog wallpaper.
-            </small>
-          </td>
-        </tr>
-
-        <!-- STATIC ROW 3 -->
-        <tr>
-          <td>3</td>
-
-          <td>
-            <div class="fw-semibold">Admin Test</div>
-            <small class="text-muted">ID: 3</small>
-          </td>
-
-          <td>
-            <small class="d-block">admin@example.com</small>
-            <small class="d-block">+91 90000 00000</small>
-          </td>
-
-          <td><span class="badge text-bg-danger">Lost</span></td>
-
-          <td class="fw-semibold">Laptop Bag</td>
-          <td>Electronics</td>
-          <td>Main Gate</td>
-          <td>2025-11-25</td>
-
-          <td><span class="badge text-bg-success">Returned</span></td>
-
-          <td style="max-width: 260px;">
-            <small class="text-muted d-block text-truncate"
-                   title="Grey laptop bag with sticker on the front.">
-              Grey laptop bag with sticker on the front.
-            </small>
-          </td>
-        </tr>
-
-      </tbody>
     </table>
   </div>
 </section>

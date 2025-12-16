@@ -21,7 +21,10 @@
   </div>
 
   <!-- Single form: item details + finder details -->
-  <form action="/report-found" method="POST" enctype="multipart/form-data" class="row g-4">
+   <!-- Original form tag for photo upload (contains enctype) -->
+  <!-- <form action="/report-found" method="POST" enctype="multipart/form-data" class="row g-4"> -->
+
+  <form action="/report-found" method="POST" class="row g-4">
    <input type="hidden" name="type" value="found">
     <!-- Item Details column -->
     <div class="col-lg-6">
@@ -42,13 +45,14 @@
         <label for="description" class="form-label">Item description</label>
         <textarea id="description" name="description" class="form-control" rows="4" placeholder="Colors, marks, brand, contents..."></textarea>
       </div>
-      <div class="mb-3">
+      <!-- upload photo -->
+      <!-- <div class="mb-3">
         <label for="itemPhoto" class="form-label">Upload photo of the item</label>
         <input class="form-control" type="file" id="itemPhoto" name="itemPhoto" accept="image/*" onchange="previewImage(event)">
         <div class="mt-3">
           <img id="photoPreview" src="" alt="Preview" class="img-fluid rounded" style="display:none; max-height:220px; box-shadow:0 6px 20px rgba(0,0,0,0.08)">
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- Founder / Finder Details column -->
@@ -56,7 +60,7 @@
       <h4 class="h3 fw-bold mb-3">Finder Details</h4>
 
       <div class="mb-3">
-        <label for="finderName" class="form-label">Your name</label>
+        <label for="fullName" class="form-label">Your name</label>
         <input type="text" id="fullName" name="fullName" class="form-control" placeholder="Full name" required>
       </div>
 
@@ -84,7 +88,7 @@
 </div>
 
 <!-- small JS for preview -->
-<script>
+<!-- <script>
   function previewImage(event) {
     const input = event.target;
     const preview = document.getElementById('photoPreview');
@@ -111,6 +115,6 @@
     };
     reader.readAsDataURL(file);
   }
-</script>
+</script> -->
 
 <%- include('partials/footer.ejs') %>
