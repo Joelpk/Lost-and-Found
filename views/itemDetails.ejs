@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container py-5">
+
+    <div class="row g-5">
+
+        <div class="col-md-6">
+            <img 
+                src="<%= item.image_url || '/images/found-pic.jpg' %>" 
+                class="img-fluid rounded-4 shadow"
+                style="object-fit:cover;"
+            >
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="fw-bold mb-3"><%= item.item_name %></h2>
+
+            <p><strong>Description:</strong><br>
+                <%= item.description || "No description provided." %>
+            </p>
+
+            <p><strong>Location Found:</strong> <%= item.location || "N/A" %></p>
+            <p><strong>Date:</strong> <%= item.event_date || "N/A" %></p>
+
+            <hr>
+
+            <h5>Contact Finder</h5>
+            <p><strong>Name:</strong> <%= item.full_name %></p>
+            <p><strong>Email:</strong> <%= item.email %></p>
+            <p><strong>Phone:</strong> <%= item.phone %></p>
+
+            <a href="/foundItem.ejs" class="btn btn-outline-secondary mt-3">
+                ← Back to Found Items
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%- include('partials/footer.ejs') %>

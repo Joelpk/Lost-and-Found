@@ -7,23 +7,39 @@
     </h1>
     <p class="lead text-center text-muted mx-auto mb-5 subtext">Every item listed here has been found by someone in the community. Search through the collection and contact the finder to retrieve your belongings.</p>
 
-    <div class="row row-cols-1 row-cols-md-4 g-4">
+<div class="row row-cols-1 row-cols-md-4 g-4">
 
-        <% for(let i = 0; i < 8; i++) { %>
+    <% if (items.length === 0) { %>
+        <p class="text-center text-muted">No found items available.</p>
+    <% } %>
+
+    <% items.forEach(item => { %>
         <div class="col">
             <div class="card h-100 shadow-sm rounded-4 hover-card">
-                <img src="/images/found-pic.jpg" class="card-img-top rounded-top-4" alt="Found item">
+
+                <a href="/item/<%= item.id %>">
+                    <img 
+                        src="<%= item.image_url || '/images/found-pic.jpg' %>" 
+                        class="card-img-top rounded-top-4" 
+                        alt="Found item"
+                        style="height:200px; object-fit:cover;"
+                    >
+                </a>
+
                 <div class="card-body">
-                    <h5 class="card-title fw-semibold">Brown leather, eyeglasses, keys</h5>
+                    <h5 class="card-title fw-semibold">
+                        <%= item.item_name %>
+                    </h5>
                     <p class="card-text text-muted">
-                        Get in touch, claim and collect your item
+                        Click to view full details
                     </p>
                 </div>
+
             </div>
         </div>
-        <% } %>
+    <% }) %>
 
-    </div>
+</div>
 
 </div>
 

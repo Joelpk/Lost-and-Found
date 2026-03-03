@@ -1,5 +1,11 @@
 <%- include('partials/header.ejs') %>
 
+<% if (success === "found") { %>
+  <div class="alert alert-success text-center">
+    ✅ Reported item submitted successfully!
+  </div>
+<% } %>
+
 <body>
   <!-- BIG IMAGE AND TEXT -->
    <section class="container py-5">

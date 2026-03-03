@@ -1,0 +1,34 @@
+<div id="ai-chatbot">
+  <!-- Floating helper -->
+  <div id="ai-helper">I’m here to help 👋</div>
+
+  <!-- Floating button -->
+  <button id="ai-toggle" aria-label="Open chat">🤖</button>
+
+  <!-- Chat panel (CLOSED by default) -->
+  <div id="ai-panel" class="hidden">
+    <div class="ai-header">
+      <div>
+        <strong>Lost & Found AI</strong>
+        <p>Your smart assistant</p>
+      </div>
+      <button id="ai-close" aria-label="Close chat">✕</button>
+    </div>
+
+    <div id="ai-messages">
+      <div class="ai-message bot">
+        Hi 👋 I can help you report lost or found items, or guide you through the platform.
+      </div>
+    </div>
+
+    <form id="ai-form">
+      <input
+        id="ai-input"
+        type="text"
+        placeholder="Ask anything about lost or found items..."
+        autocomplete="off"
+      />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>

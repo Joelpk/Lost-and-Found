@@ -24,7 +24,7 @@
    <!-- Original form tag for photo upload (contains enctype) -->
   <!-- <form action="/report-found" method="POST" enctype="multipart/form-data" class="row g-4"> -->
 
-  <form action="/report-found" method="POST" class="row g-4">
+  <form action="/report-found" method="POST" enctype="multipart/form-data" class="row g-4">
    <input type="hidden" name="type" value="found">
     <!-- Item Details column -->
     <div class="col-lg-6">
@@ -53,6 +53,11 @@
           <img id="photoPreview" src="" alt="Preview" class="img-fluid rounded" style="display:none; max-height:220px; box-shadow:0 6px 20px rgba(0,0,0,0.08)">
         </div>
       </div> -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Upload Image</label><br>
+        <input type="file" name="image" accept="image/*">
+      </div>
+
     </div>
 
     <!-- Founder / Finder Details column -->
@@ -71,7 +76,7 @@
 
       <div class="mb-3">
         <label for="contact" class="form-label">Phone</label>
-        <input type="tel" id="phone" name="phone" class="form-control" placeholder="email" required>
+        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 9XXXXXXXXX" required>
       </div>
 
       <div class="mb-3">

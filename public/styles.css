@@ -86,3 +86,155 @@
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
+
+/* Chatbot container */
+#ai-chatbot {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* Floating button */
+#ai-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  border: none;
+  background: #0f51e0;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* Chat panel */
+#ai-panel {
+  width: 420px;
+  height: 600px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+/* Header */
+.ai-header {
+  padding: 16px;
+  background: #111827;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-header p {
+  font-size: 12px;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.ai-header button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Messages */
+#ai-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f9fafb;
+}
+
+/* Message bubbles */
+.ai-message {
+  max-width: 80%;
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+/* Bot message */
+.ai-message.bot {
+  background: #e5e7eb;
+  color: #111;
+  align-self: flex-start;
+}
+
+/* User message */
+.ai-message.user {
+  background: #2563eb;
+  color: #fff;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* Input area */
+#ai-form {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+#ai-input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+#ai-form button {
+  margin-left: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
+#ai-helper {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  background: #1a5be7;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  animation: float 2.5s ease-in-out infinite;
+  cursor: default;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.ai-header {
+  position: relative;
+  z-index: 10;
+}
+
+#ai-close {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+  cursor: pointer;
+}

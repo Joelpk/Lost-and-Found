@@ -17,15 +17,13 @@
       <p class="lead mb-4">
         Fill the form below and enter the details of the missing item. Adding a photo helps the community identify your belongings faster.
       </p>
+      <a href="/login.ejs">Login / Register to report item</a>
     </div>
   </div>
 
-  <!-- Single form: item details + finder details -->
-   <!-- Original form tag with enctype for picture upload  -->
-  <!-- <form action="/report-lost" method="POST" enctype="multipart/form-data" class="row g-4"> -->
 
   <div class="container py-5">
-  <form method="POST" action="/report-lost">
+  <form method="POST" action="/report-lost" enctype="multipart/form-data">
 
     <div class="row g-4">
 
@@ -94,6 +92,11 @@
                  name="phone"
                  placeholder="+91 9XXXXXXXXX">
         </div>
+
+        <div class="mb-3">
+        <label for="description" class="form-label">Upload Image</label> <br>
+        <input type="file" name="image" accept="image/*">
+      </div>
       </div>
 
     </div>

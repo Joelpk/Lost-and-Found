@@ -1,0 +1,67 @@
+<%- include('partials/header.ejs') %>
+
+<section class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  
+  <div class="card shadow-lg border-0 p-4" style="max-width: 450px; width: 100%; border-radius: 20px;">
+    
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Welcome Back</h2>
+      <p class="text-muted">Login to your account</p>
+    </div>
+
+    <form action="/login" method="POST">
+      
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Email address</label>
+        <input 
+          type="email" 
+          class="form-control rounded-3" 
+          name="email" 
+          placeholder="Enter your email"
+          required
+        >
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Password</label>
+        <input 
+          type="password" 
+          class="form-control rounded-3" 
+          name="password" 
+          placeholder="Enter your password"
+          required
+        >
+      </div>
+
+      <!-- Remember Me -->
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="rememberMe">
+        <label class="form-check-label" for="rememberMe">Remember me</label>
+      </div>
+
+      <!-- Login Button -->
+      <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-primary btn-lg rounded-3">
+          Login
+        </button>
+      </div>
+
+      <!-- Register Link -->
+      <div class="text-center">
+        <small>
+          New user? 
+          <a href="/register" class="fw-semibold text-decoration-none">
+            Register here
+          </a>
+        </small>
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+<%- include('partials/footer.ejs') %>
